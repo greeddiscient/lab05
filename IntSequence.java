@@ -35,8 +35,12 @@ public class IntSequence {
     // Assumptions: The array isn't full, i.e. myCount < myValues.length
     // Also, insertPos is between 0 and myCount, inclusive.
     public void insert(int toInsert, int insertPos) {
-    	if (insertPos < 0 || insertPos >= myCount) {
+    	if (insertPos < 0 || insertPos > myCount) {
     		return;
+    	}
+    	
+    	if(insertPos==myCount){
+    		myValues[insertPos]=toInsert;
     	}
     	
     	int[] temp=new int[myCount];	
@@ -44,7 +48,7 @@ public class IntSequence {
     		temp[i]=myValues[i];
     	}
     	myValues[insertPos]=toInsert;
-    	for(int i=insertPos+1; i<myCount;i++){
+    	for(int i=insertPos+1; i<=myCount;i++){
     		myValues[i]=temp[i-1];
     	}
     	

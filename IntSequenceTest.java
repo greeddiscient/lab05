@@ -41,7 +41,7 @@ public class IntSequenceTest extends TestCase {
 	}**/
 	
 	public void testInsert(){
-		IntSequence a= new IntSequence(2);
+		IntSequence a= new IntSequence(3);
 		a.add(1);
 		a.insert(2, 1);
 		assertEquals(a.toString(), "1 2");
