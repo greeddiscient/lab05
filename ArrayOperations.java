@@ -8,6 +8,14 @@ public class ArrayOperations {
 			return;
 		}
 		// YOUR CODE HERE
+		int[] temp=new int[values.length];
+		for (int i=pos+1;i<values.length;i++ ){
+			temp[i]=values[i];
+		}
+		for(int i=pos; i<values.length-1;i++){
+			values[i]=temp[i+1];
+		}
+		values[values.length-1]=0;
 	}
 	
 	// Insert newInt at the given position in the argument array,
@@ -17,6 +25,15 @@ public class ArrayOperations {
 		if (pos < 0 || pos >= values.length) {
 			return;
 		}
+		
 		// YOUR CODE HERE
+		int[] temp=new int[values.length];	
+		for (int i=pos;i<values.length;i++ ){
+			temp[i]=values[i];
+		}
+		values[pos]=newInt;
+		for(int i=pos+1; i<values.length;i++){
+			values[i]=temp[i-1];
+		}
 	}
 }
