@@ -9,6 +9,9 @@ public class IntSequence {
     // number of elements it can hold
     public IntSequence(int capacity) {
         // YOUR CODE HERE
+    	myValues= new int[capacity];
+    	myCount=0;
+    	
     }
 
     // Add the argument to the sequence by placing it in the first
@@ -16,6 +19,14 @@ public class IntSequence {
     // Assume that the sequence isn't full.
     public void add(int toBeAdded) {
         // YOUR CODE HERE
+    	if (myCount> myValues.length-1){
+    		System.err.println("no more space");
+    		System.exit(1);
+    	}
+    	
+    	myValues[myCount]=toBeAdded;
+    	myCount++;
+    	
     }
 
     // Insert toInsert into the sequence at position insertPos,
@@ -33,5 +44,42 @@ public class IntSequence {
 
     // other methods go here
 
+    public boolean isEmpty(){
+    	if (myCount==0){
+    		return true;
+    	}
+    	else{
+    		return false;
+    	}
+    }
+    
+    public int size(){
+    	return myCount;
+    }
+    
+    public int elementAt(int pos){
+    	if (pos>myCount){
+    		System.err.println("not in sequence");
+    		System.exit(1);
+    	}
+    	
+    	return myValues[pos];
+    	
+    }
+    
+    public String toString(){
+    	String s= new String();
+    	for (int i=0;i<myValues.length;i++){
+    		if (i==myValues.length-1){
+    			s+=myValues[i];
+    		}
+    		else{
+    			s= s+myValues[i]+ " ";
+    		}
+    	}
+    	return s;
+    }
+    
+    
 }
 
