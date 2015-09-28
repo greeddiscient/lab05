@@ -35,12 +35,24 @@ public class IntSequence {
     // Assumptions: The array isn't full, i.e. myCount < myValues.length
     // Also, insertPos is between 0 and myCount, inclusive.
     public void insert(int toInsert, int insertPos) {
-        for (int k = insertPos + 1; k <= myCount; k++) {
-            myValues[k] = myValues[k-1];
-        }
-        myValues[insertPos] = toInsert;
+    	if (insertPos < 0 || insertPos >= myCount) {
+    		return;
+    	}
+    	
+    	int[] temp=new int[myCount];	
+    	for (int i=insertPos;i<myCount;i++ ){
+    		temp[i]=myValues[i];
+    	}
+    	myValues[insertPos]=toInsert;
+    	for(int i=insertPos+1; i<myCount;i++){
+    		myValues[i]=temp[i-1];
+    	}
+    	
+       
         myCount++;
     }
+    
+    
 
     // other methods go here
 
@@ -69,8 +81,8 @@ public class IntSequence {
     
     public String toString(){
     	String s= new String();
-    	for (int i=0;i<myValues.length;i++){
-    		if (i==myValues.length-1){
+    	for (int i=0;i<=myCount-1;i++){
+    		if (i==myCount-1){
     			s+=myValues[i];
     		}
     		else{
@@ -80,6 +92,33 @@ public class IntSequence {
     	return s;
     }
     
+    public void remove(int pos){
+    	if (pos < 0 || pos >= myCount) {
+			return;
+		}
+    	if (pos==myCount-1){
+    		myCount--;
+    		return;
+    	}
+    	int[] temp=new int[myCount];
+		for (int i=pos+1;i<myCount;i++ ){
+			temp[i]=myValues[i];
+		}
+		for(int i=pos; i<myCount-1;i++){
+			myValues[i]=temp[i+1];
+		}
+		myCount--;
+		
+    }
+   
+    public boolean contains(int k){
+    	for(int i=0;i<myCount;i++){
+    		if (myValues[i]==k){
+    			return true;
+    		}
+    	}
+    	return false;
+    }
     
 }
 
