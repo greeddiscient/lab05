@@ -36,5 +36,23 @@ public class ArrayOperationsTest extends TestCase {
 			assertTrue (array1[k] == array2[k]);
 		}
 	}
+	
+	public void testZip() {
+	    int[] array1 = {1, 2, 3};
+	    int[] array2 = {4, 5, 6};
+	    int[] zipResult = {1, 4, 2, 5, 3, 6};
+
+	    // Test 1: zipResult returns correctly interleaved array.
+	    check(ArrayOperations.zip(array1, array2), zipResult);
+
+	    // Test 2: zipResult does not change the arguments.
+	    int[] array1copy = {1, 2, 3};
+	    int[] array2copy = {4, 5, 6};
+	    check (array1, array1copy);
+	    check (array2, array2copy);
+
+	    // Test 3: zipResult works on boundary case.
+	    check (ArrayOperations.zip(new int[0], new int[0]), new int[0]);
+	}
 
 }

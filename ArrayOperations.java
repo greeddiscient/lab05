@@ -36,4 +36,17 @@ public class ArrayOperations {
 			values[i]=temp[i-1];
 		}
 	}
+	
+	public static int[] zip(int[] a1, int[]a2){
+		int[] result= new int[a1.length+a2.length];
+		for(int i=0;i<result.length;i++){
+			if (i%2==0){
+				result[i]=a1[i/2];
+			}
+			else{
+				result[i]=a2[i/2];
+			}
+		}
+		return result;
+	}
 }
